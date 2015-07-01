@@ -30,6 +30,11 @@ function updateCss(element, i) {
   } else {
     xRailOffset.top = i.scrollbarXTop + element.scrollTop;
   }
+  if (i.settings.staticBar.indexOf('x') > -1) {
+    delete xRailOffset.top;
+    delete xRailOffset.left;
+    delete xRailOffset.bottom;
+  }
   d.css(i.scrollbarXRail, xRailOffset);
 
   var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
@@ -45,6 +50,11 @@ function updateCss(element, i) {
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
+  }
+  if (i.settings.staticBar.indexOf('y') > -1) {
+    delete yRailOffset.top;
+    delete yRailOffset.right;
+    delete yRailOffset.left;
   }
   d.css(i.scrollbarYRail, yRailOffset);
 

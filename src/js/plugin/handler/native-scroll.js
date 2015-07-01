@@ -6,13 +6,18 @@
 var instances = require('../instances')
   , updateGeometry = require('../update-geometry');
 
-function bindNativeScrollHandler(element, i) {
+function bindNativeScrollHandler(element, i, extra) {
   i.event.bind(element, 'scroll', function () {
     updateGeometry(element);
   });
+  if (extra) {
+    i.event.bind(extra, 'scroll', function () {
+      updateGeometry(element);
+    });
+  }
 }
 
-module.exports = function (element) {
+module.exports = function (element, extra) {
   var i = instances.get(element);
-  bindNativeScrollHandler(element, i);
+  bindNativeScrollHandler(element, i, extra);
 };

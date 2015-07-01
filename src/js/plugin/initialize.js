@@ -24,13 +24,16 @@ module.exports = function (element, userSettings) {
 
   // Create a plugin instance.
   var i = instances.add(element);
+  var extraListener = userSettings.extraListener;
+
+  delete userSettings.extraListener;
 
   i.settings = h.extend(i.settings, userSettings);
 
   clickRailHandler(element);
   dragScrollbarHandler(element);
-  mouseWheelHandler(element);
-  nativeScrollHandler(element);
+  mouseWheelHandler(element, extraListener);
+  nativeScrollHandler(element, extraListener);
   selectionHandler(element);
 
   if (h.env.supportsTouch || h.env.supportsIePointer) {

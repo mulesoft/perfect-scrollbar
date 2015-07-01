@@ -15,5 +15,6 @@ module.exports = {
   suppressScrollY: false,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
-  stopPropagationOnClick: true
+  stopPropagationOnClick: true,
+  staticBar: ''
 };
