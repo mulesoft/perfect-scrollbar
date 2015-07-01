@@ -7,7 +7,7 @@ var h = require('../../lib/helper')
   , instances = require('../instances')
   , updateGeometry = require('../update-geometry');
 
-function bindMouseWheelHandler(element, i) {
+function bindMouseWheelHandler(element, i, extra) {
   var shouldPrevent = false;
 
   function shouldPreventDefault(deltaX, deltaY) {
@@ -133,12 +133,18 @@ function bindMouseWheelHandler(element, i) {
 
   if (typeof window.onwheel !== "undefined") {
     i.event.bind(element, 'wheel', mousewheelHandler);
+    if (extra) {
+      i.event.bind(extra, 'wheel', mousewheelHandler);
+    }
   } else if (typeof window.onmousewheel !== "undefined") {
     i.event.bind(element, 'mousewheel', mousewheelHandler);
+    if (extra) {
+      i.event.bind(extra, 'mousewheel', mousewheelHandler);
+    }
   }
 }
 
-module.exports = function (element) {
+module.exports = function (element, extra) {
   var i = instances.get(element);
-  bindMouseWheelHandler(element, i);
+  bindMouseWheelHandler(element, i, extra);
 };
