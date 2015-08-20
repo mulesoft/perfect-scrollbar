@@ -34,6 +34,7 @@ function Instance(element) {
   i.ownerDocument = element.ownerDocument || document;
 
   i.scrollbarXRail = d.appendTo(d.e('div', 'ps-scrollbar-x-rail'), element);
+  i.scrollbarXRailBackground = d.appendTo(d.e('div', 'ps-scrollbar-rail-x'), i.scrollbarXRail);
   i.scrollbarX = d.appendTo(d.e('div', 'ps-scrollbar-x'), i.scrollbarXRail);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
@@ -50,6 +51,7 @@ function Instance(element) {
   i.railXRatio = null;
 
   i.scrollbarYRail = d.appendTo(d.e('div', 'ps-scrollbar-y-rail'), element);
+  i.scrollbarYRailBackground = d.appendTo(d.e('div', 'ps-scrollbar-rail-y'), i.scrollbarYRail);
   i.scrollbarY = d.appendTo(d.e('div', 'ps-scrollbar-y'), i.scrollbarYRail);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
